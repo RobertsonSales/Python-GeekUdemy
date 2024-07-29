@@ -1,0 +1,34 @@
+Para criar um novo projeto, escolha essa opção no PyCharm. 
+Após criada a pasta e o ambiente virtual, abra o terminal
+e siga essas instruções:
+
+1 - "pip install django whitenoise gunicorn django-bootstrap5 PyMySQL django-stdimage"
+
+2 - "pip freeze requirements.txt"
+
+3 - "django-admin startproject django2 ."
+
+4 - "django-admin startapp core"
+
+5 - Abrir o arquivo Settings e na seção ALLOWED_HOSTS colocar ['*']
+
+6 - Na seção INSTALLED_APPS adicionar as aplicações "core", "bootstrap5" e "stdimage"
+
+7 - Na seção MIDDLEWARE, inserir, na segunda linha: "whitenoise.middleware.WhiteNoise.Middleware"
+
+8 - Na seção TEMPLATES/DIR, inserir ['templates']
+
+9 - Na seção DATABASES, incluuir:
+	
+	'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django2',
+        'USER': 'dev',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '3306',
+
+10 - Na seção LANGUAGE_CODE, modificar para 'pt-br'
+	e em TIME_ZONE, modificar para 'America/Brasilia'
+
+11 - Na seção STATIC_URL, adcionar: 
+	"STATIC_HOOT = os.path.join(BASE_DIR, 'staticfiles')"

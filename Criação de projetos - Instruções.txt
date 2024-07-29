@@ -1,0 +1,98 @@
+Para criar um novo projeto, escolha essa opção no PyCharm. 
+Após criada a pasta e o ambiente virtual, abra o terminal
+e siga essas instruções:
+
+1 - "pip install django whitenoise gunicorn django-bootstrap5 PyMySQL django-stdimage"
+
+2 - "pip freeze requirements.txt"
+
+3 - "django-admin startproject django2 ."
+
+4 - "django-admin startapp core"
+
+5 - Abrir o arquivo Settings e na seção ALLOWED_HOSTS colocar ['*']
+
+6 - Na seção INSTALLED_APPS adicionar as aplicações "core", "bootstrap5" e "stdimage"
+
+7 - Na seção MIDDLEWARE, inserir, na segunda linha: "whitenoise.middleware.WhiteNoise.Middleware"
+
+8 - Na seção TEMPLATES/DIR, inserir ['templates']
+
+9 - Na seção DATABASES, incluuir:
+	
+	'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django2',
+        'USER': 'sales',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '3306',
+
+Configuração do arquivo Views
+
+1 - Neste arquivo são definidas as views do projeto, 
+	os formulários html, páginas propriamente ditas.
+	Exemnplo:
+	def index(request):
+	return render(request,'index.html')
+
+
+Configuração da pasta Templates
+
+1 - Clicar com o botão direito do mouse na aplicação (core)
+	e criar uma pasta de nome "templates"
+
+2 - Criar três arquivos html (index, contato, produto)
+	exemplo: 
+	<!DOCTYPE html>
+	<html lang="pt-br"> * Alterar para português
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Index</title> * Incluir o nome do arquivo
+	</head>
+	<body>
+	    <h1>Index</h1> * Incluir o parágrafo com o nome
+	</body>
+	</html>
+
+Configuração da pasta statics
+
+1 - Clicar com o botão direito do mouse na aplicação (core)
+	e criar a pasta "static", 
+	e dentro dela crias as pastas "css", "js" e "images"
+
+Configuração das rotas
+
+1 - No arquivo "urls.py", na pasta "django2", incluir
+	na os segundo import, após o path, o "include"
+
+2 - Em urlpatterns, incluir path ('', include('core.urls'))
+
+3 - Na pasta core, o arquivo Python "urls.py"
+
+4 - No arquivo "urls.py", incluir as instruções:
+
+from django.urls import path
+
+from .vews import index, contato, produto
+
+urlpatterns = [
+    path('', index, name='index'),
+    path('', contato/, name='contato'),
+    path('', produto/, name='produto'),
+]
+
+Para testar a aplicação:
+
+1 - Instalar o MySQL com o comando "pip install MySQL" 
+
+2 - Salvar as bibliotecas adicionadas com o comando:
+	"pip freeze > requirements.txt"
+3 - Digitar no terminal o comando "python manage.py migrate"
+
+4 - Criar o superusuário com o comando "python manage.py createsuperuser"
+	Usuário: sales
+	e-mail: robertguima@gmail.com
+	senha: "adminabcd"
+
+5 - 
+
