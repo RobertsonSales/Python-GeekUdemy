@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'bootstrap5',
+    'django_bootstrap5',
     'stdimage',
 
 ]
@@ -115,20 +115,35 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'America/Brasilia'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_HOOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = 'media/' #Criou-se um diretório mídia e um subdiretório produtos
+MEDIA_HOOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# configurações de e-mail
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+"""
+Configuração do e-mail quando houver um servidor de e-mail:
+
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = 'no-replay@seudominio.com.br'
+EMAIL_PORT = 587
+EMAIL_USER_TSL = True
+EMAIL_HOST_PASSWORD = 'sua-senha'
+
+"""
